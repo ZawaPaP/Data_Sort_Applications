@@ -4,7 +4,7 @@ from FileReader import FileReader
 
 import sys
 import os
-
+#  
 class SortApp():
     def fileHandles(self):
         if (sys.argv[1] == None):
@@ -20,7 +20,6 @@ class SortApp():
         sort_function = SortFunction(data, writer)
         sort_function.sortHandlings()
         writer.close()
-
 
 def main():
     file_path = SortApp().fileHandles()

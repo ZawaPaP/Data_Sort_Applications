@@ -1,37 +1,33 @@
-from sortFunctions import sortFunctions
-from writeFile  import writeFile
-from readFile  import readFile
+from SortFunction import SortFunction
+from FileWriter import FileWriter
+from FileReader import FileReader
 
 import sys
 import os
 
 class SortApp():
-    def run(inputFile_path, outputFile_path):
-        readData = readFile(inputFile_path)
-        sortFunction = sortFunctions(readData, outputFile_path)
-        sortFunction.sortOption()
-
-
-    def fileHandles():
+    def fileHandles(self):
         if (sys.argv[1] == None):
             print("argument Error")
-
         arg = sys.argv[1]
         if not arg:
             return False
-
         if os.path.isfile(arg):
             return arg
 
-def main():
+    def run(self,reader, writer):
+        data = reader.tokenizer()
+        sort_function = SortFunction(data, writer)
+        sort_function.sortHandlings()
+        writer.close()
 
-    file = SortApp.fileHandles()
-    read = readFile(file)
-    write = writeFile(file)
-    inputFile_path = read.Constructor(file)
-    outputFile_path = write.Constructor(file)
-    SortApp.run(inputFile_path, outputFile_path)
-    write.close()
+
+def main():
+    file_path = SortApp().fileHandles()
+    reader = FileReader(file_path)
+    writer = FileWriter(file_path)
+    SortApp().run(reader, writer)
+
 
 if __name__ == "__main__":
     main()

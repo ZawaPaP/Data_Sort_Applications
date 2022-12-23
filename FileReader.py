@@ -1,34 +1,20 @@
-
-import re
-
+from DataExample import data_example
+import os
 class FileReader():
-
-    def __init__(self, input_file_path):
-        self.file_path = input_file_path
-        self.fp = open(self.file_path, 'r')
-        self.list = []
-        self.data = ""
-        self.split_line = ""
+    def __init__(self, args):
+        self.args = args
+        self.fp = args.infile
 
     def read(self):
-        self.data = self.fp.read()
-        if self.data == "":
-            return self.data == ""
+        if self.args.nums:
+            data = self.args.nums
+        elif os.path.isfile(self.args.infile.name):
+            data = self.fp.read() #ここ失敗した時の回避エラーを入れる
+            self.fp.close()
+        else:
+            data = data_example()  # import dummy data
+            print('data is dummy')
+        return data
 
-    def tokenizer(self):
-        self.read()
-        if self.data != "":
-            self.data.split()
-            self.split_line = re.split(",", self.data)
-            self.split_line = list(filter(None, self.split_line))
-            self.list = [int(i) for i in self.split_line]
-
-            if self.split_line == "":
-                return None
-            return self.list
-        
-        print("No Data Found")
-        return None
-
-    # check text size 
-    #def fileSizeCheck(self):
+    def close(self):
+        self.fp.close()

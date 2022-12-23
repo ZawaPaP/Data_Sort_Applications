@@ -1,32 +1,14 @@
-from SortFunction import SortFunction
-from FileWriter import FileWriter
-from FileReader import FileReader
-
-import sys
-import os
-#  
-class SortApp():
-    def fileHandles(self):
-        if (sys.argv[1] == None):
-            print("argument Error")
-        arg = sys.argv[1]
-        if not arg:
-            return False
-        if os.path.isfile(arg):
-            return arg
-
-    def run(self,reader, writer):
-        data = reader.tokenizer()
-        sort_function = SortFunction(data, writer)
-        sort_function.sortHandlings()
-        writer.close()
+from ParseOptions import get_args
+from SortController import SortController
+from DataWriter import DataWriter
 
 def main():
-    file_path = SortApp().fileHandles()
-    reader = FileReader(file_path)
-    writer = FileWriter(file_path)
-    SortApp().run(reader, writer)
-
+    args = get_args()
+    print(args.sort)
+    print(args.nums)
+    print(args.infile)
+    sorted_data = SortController(args).sortController()
+    DataWriter(args).write(sorted_data)
 
 if __name__ == "__main__":
     main()

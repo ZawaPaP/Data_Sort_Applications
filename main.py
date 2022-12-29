@@ -1,10 +1,14 @@
 from ParseOptions import get_args
-from SortController import SortController
+from SortController import sortController
+from DataOrganizer import DataOrganizer
 from DataWriter import DataWriter
 
 def main():
     args = get_args()
-    sorted_data = SortController(args).sortController()
+    organizer = DataOrganizer(args)
+    data = organizer.data_validate()
+    sort_type = args.sort
+    sorted_data = sortController(data, sort_type)
     DataWriter(args).write(sorted_data)
 
 if __name__ == "__main__":

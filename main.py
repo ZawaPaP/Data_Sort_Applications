@@ -3,6 +3,7 @@ from SortController import sortController
 from DataOrganizer import DataOrganizer
 from DataWriter import DataWriter
 
+import sys
 def main():
     args = get_args()
     organizer = DataOrganizer(args)

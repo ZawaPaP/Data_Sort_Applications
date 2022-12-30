@@ -3,9 +3,10 @@ import sys
 
 def get_args():
     parser = argparse.ArgumentParser(description='Sort some integers.')
+
     parser.add_argument(
-        '-nums', 
-        metavar='N', 
+        '-d', 
+        '--data',
         type=int, 
         nargs='+', 
         help='an integer for the sort, give dummy data without input [0,9,8,7,6,5,4,3,2,1]'
@@ -19,11 +20,11 @@ def get_args():
         )
     parser.add_argument(
         '-i', 
-        '--infile', 
+        '--input_file_path', 
         nargs='?', 
         type=argparse.FileType('r'),
-        default=sys.stdin,  
-        help='input data path, default = <stdin>'
+        default=sys.stdin, 
+        help='input file_path as the input source, default = <stdin>'
         )
     parser.add_argument(
         '-o', 

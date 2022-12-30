@@ -1,2 +1,6 @@
+import random
+
 def data_example():
-    return [0,9,8,7,6,5,4,3,2,1]
+    data = [random.randint(0,100) for i in range(100)]
+    print("this is example data randomly generated")
+    return data

@@ -2,6 +2,8 @@ from FileReader import FileReader
 from DataExample import data_example
 import re
 import os
+import sys
+import select
 
 class DataOrganizer():
     def __init__(self, args):
@@ -11,10 +13,8 @@ class DataOrganizer():
 
     def data_validate(self):
         self.data = self.get_input_data()
-        
-        try:
-            self.data = self.data.replace(' ','')
 
+        try:
             if not self.check_is_list():
                 self.change_to_list()
 
@@ -27,14 +27,18 @@ class DataOrganizer():
         return self.data
             
     def get_input_data(self):
-        if self.args.nums:
-            return self.args.nums
-        elif os.path.isfile(self.args.infile.name):
-            return self.reader.read() 
+        if self.check_if_stdin_has_data():
+            return [ int(x) for x in sys.stdin.readlines()]
+
+        elif self.args.input_file_path and os.path.isfile(self.args.input_file_path.name):
+            return self.reader.read().replace(' ','')
         else:
-            print('data is dummy')
-            return data_example()  # import dummy data
-            
+            return data_example()  # import example data
+    
+    def check_if_stdin_has_data(self):
+        if select.select([sys.stdin, ], [], [], 0.0)[0]:
+            return True
+        return False
 
     def change_to_list(self):        
         self.data = re.split(",", self.data)

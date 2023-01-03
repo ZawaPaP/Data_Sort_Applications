@@ -17,21 +17,35 @@ def insertSort(data):
 def mergeSort(data):
     if len(data) <= 1:
         return
-
     mid = len(data) // 2
+
     sub_array1 = data[:mid]
     sub_array2 = data[mid:]
 
     mergeSort(sub_array1)
     mergeSort(sub_array2)
 
-    sub_array3 = sub_array1 + sub_array2
-
-    for i in range(len(sub_array3)):
-        if sub_array3[0] <= sub_array3[-1]:
-            data[i] = sub_array3.pop(0)
+    k = 0
+    i = j = 0
+    while i < len(sub_array1) and j < len(sub_array2): 
+        if sub_array1[i] <= sub_array2[j]: 
+            data[k] = sub_array1[i] 
+            i += 1 
         else:
-            data[i] = sub_array3.pop()
+            data[k] = sub_array2[j]
+            j += 1
+        k += 1
+
+    while i < len(sub_array1):
+        data[k] = sub_array1[i]
+        i += 1
+        k += 1
+
+    while j < len(sub_array2):
+        data[k] = sub_array2[j]
+        j += 1
+        k += 1
+
 
 """ code is wrong
 def quickSort(data):

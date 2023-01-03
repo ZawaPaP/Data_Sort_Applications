@@ -9,7 +9,7 @@ def get_args():
         '--data',
         type=int, 
         nargs='+', 
-        help='an integer for the sort, give dummy data without input [0,9,8,7,6,5,4,3,2,1]'
+        help='an integer for the sort, generate sample data without any input'
         )
     parser.add_argument(
         '-s', 

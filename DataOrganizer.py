@@ -3,7 +3,7 @@ from DataExample import data_example
 import re
 import os
 import sys
-import select
+import fileinput
 
 class DataOrganizer():
     def __init__(self, args):
@@ -11,7 +11,7 @@ class DataOrganizer():
         self.reader = FileReader(args)
         self.data = None
 
-    def data_validate(self):
+    def validate_input(self):
         self.data = self.get_input_data()
 
         try:
@@ -36,7 +36,7 @@ class DataOrganizer():
             return data_example()  # import example data
     
     def check_if_stdin_has_data(self):
-        if select.select([sys.stdin, ], [], [], 0.0)[0]:
+        if fileinput.input():
             return True
         return False
 

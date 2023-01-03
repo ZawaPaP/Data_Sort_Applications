@@ -7,7 +7,7 @@ import sys
 def main():
     args = get_args()
     organizer = DataOrganizer(args)
-    data = organizer.data_validate()
+    data = organizer.validate_input()
     sort_type = args.sort
     sorted_data = sortController(data, sort_type)
     DataWriter(args).write(sorted_data)

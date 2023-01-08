@@ -1,16 +1,18 @@
-from ParseOptions import get_args
-from SortController import sortController
-from DataOrganizer import DataOrganizer
-from DataWriter import DataWriter
+from parse_options import get_args
+from sort import sort
+from io_controller import IOController
+from data_validator import validate_data
+from utils import log
 
-import sys
+
 def main():
+    log.configure_logging()
     args = get_args()
-    organizer = DataOrganizer(args)
-    data = organizer.validate_input()
-    sort_type = args.sort
-    sorted_data = sortController(data, sort_type)
-    DataWriter(args).write(sorted_data)
+    io_controller = IOController(args)
+    input_data = io_controller.get_input_data()
+    validated_data = validate_data(input_data)
+    sorted_data = sort(validated_data, args.sort_option)
+    io_controller.output_data(sorted_data)
 
 if __name__ == "__main__":
     main()

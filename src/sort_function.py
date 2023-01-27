@@ -1,5 +1,8 @@
+import time
+
 # time complexity O(N^2), space complexity O(N) - using space for data[]
 def insert_sort(data):
+    start_time = time.perf_counter()
     for i in range(1, len(data)):
         curr = data[i]
 
@@ -11,11 +14,13 @@ def insert_sort(data):
             else:
                 break
         data[j] = curr
-    return data
+    return data, time.perf_counter() - start_time
         
 
 # time complexity O(NlogN), space complexity O(2N) - using space for data[] and queue()
 def merge_sort(data):
+    start_time = time.perf_counter()
+
     if len(data) <= 1:
         return data
     mid = len(data) // 2
@@ -23,7 +28,7 @@ def merge_sort(data):
     sub_array1 = merge_sort(data[:mid])
     sub_array2 = merge_sort(data[mid:])
 
-    return merge(sub_array1, sub_array2)
+    return merge(sub_array1, sub_array2), time.perf_counter() - start_time
 
 def merge(sub_array1, sub_array2):
     i = j = 0
@@ -43,6 +48,8 @@ def merge(sub_array1, sub_array2):
     return data
 
 def quick_sort(data): 
+    start_time = time.perf_counter()
+
     if len(data) <= 1:
         return data
 
@@ -55,9 +62,10 @@ def quick_sort(data):
     left = quick_sort(left)  
     right = quick_sort(right)
 
-    return left + pivot + right
+    return left + pivot + right, time.perf_counter() - start_time
 
 def bubble_sort(data):
+    start_time = time.perf_counter()
     tmp = 0
     for i in range(0, len(data) - 1):
         for j in range(0, len(data) - 1 - i):
@@ -65,7 +73,7 @@ def bubble_sort(data):
                 tmp = data[j]
                 data[j] = data[j+1]
                 data[j+1] = tmp
-    return data
+    return data, time.perf_counter() - start_time
 
 
     

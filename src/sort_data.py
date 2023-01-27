@@ -28,6 +28,6 @@ def sort_data(data, sort_option):
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 f = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s')
-fh = logging.FileHandler('./log/sort.log')
+fh = logging.FileHandler('./log.log')
 fh.setFormatter(f)
 logger.addHandler(fh) 

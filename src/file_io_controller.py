@@ -17,6 +17,6 @@ def write_output_to_file(output_file, sortedList):
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 f = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s')
-fh = logging.FileHandler('./log/file_io_controller.log')
+fh = logging.FileHandler('./log.log')
 fh.setFormatter(f)
 logger.addHandler(fh)  

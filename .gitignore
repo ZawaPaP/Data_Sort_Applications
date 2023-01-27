@@ -1,2 +1,4 @@
 test/
 test.txt
+draft.py
+*.py[cod]

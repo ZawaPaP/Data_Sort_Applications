@@ -4,13 +4,11 @@ from set_logger import SetLogger
 
 def validate_data(data):
     logger = SetLogger().set_logger(__name__)
-    logger.debug('Start of validate_data {}'.format(data))
     if not data:
         logger.error("There is no input data")
         sys.exit(1)
     
     data = __return_list(data)
-    logger.debug('End of return_list {}'.format(data))
     return __return_int(data)
 
 def __return_list(data):

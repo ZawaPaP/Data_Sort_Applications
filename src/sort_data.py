@@ -18,8 +18,9 @@ def sort_data(data, sort_option):
         elif sort_option == SortType.BUBBLE.value:
             logger.debug('Start of bubble_sort')
             result = sort_function.bubble_sort(data)
-        logger.info("Processed time: " + str(result[1]) + " seconds")
-        return result[0]
+        logger.info(str(SortType(sort_option)))
+        logger.debug('End sort function')
+        return result
     except UnboundLocalError as e:
         logger.warning(e)
         logger.warning('sort_option: ' + str(sort_option))

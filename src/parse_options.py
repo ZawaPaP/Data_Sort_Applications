@@ -2,12 +2,15 @@ import argparse
 import sys
 
 def get_args(args):
-    parser = argparse.ArgumentParser(description='Sort some integers.')
+    parser = argparse.ArgumentParser(description='Sort some integers.', formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument(
         '-v', 
         '--verbose', 
-        action = "store_true",
-        help ='logging.DEBUG if verbose else logging.ERROR'
+        action = "count",
+        help ='''
+            -v: logging.DEBUG if verbose else logging.ERROR\n
+            -vv: try all sort options and print processed time
+                '''
     )
     parser.add_argument(
         '-l',
@@ -20,7 +23,13 @@ def get_args(args):
         '--sort_option', 
         type = int, 
         default = 1, 
-        help = '1: insert_sort, 2: merge_sort, 3: quick_sort, 4: bubble_sort, 5: heap sort'
+        help = '''
+            1: insert_sort\n
+            2: merge_sort\n
+            3: quick_sort\n
+            4: bubble_sort\n
+            5: heap sort
+            '''
         )
     parser.add_argument(
         '-i', 

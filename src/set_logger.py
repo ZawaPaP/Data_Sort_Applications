@@ -1,7 +1,7 @@
 import logging
 
 class SetLogger():
-    verbose = False
+    verbose = 0
     log = False
     
     def set_logger(self, name):
@@ -17,7 +17,7 @@ class SetLogger():
         return logger
             
     def set_verbose(self, logger):
-        if self.verbose == True:
+        if self.verbose >= 1:
             logger.setLevel(logging.DEBUG)
         else:
             logger.setLevel(logging.ERROR)

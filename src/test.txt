@@ -1,0 +1,1 @@
+python3 main.py -i tests/test_input_100.txt -l -v -o tests/test_output.txt

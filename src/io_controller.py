@@ -32,7 +32,6 @@ class IOController():
                 self.logger.error("failed to get input data from stdin")
                 sys.exit(1) 
         
-
     def write(self, data):
         if os.path.isfile(self.output_file.name):
             try:

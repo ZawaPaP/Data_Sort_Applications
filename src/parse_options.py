@@ -1,20 +1,35 @@
 import argparse
-import sys, logging
+import sys
 
 def get_args(args):
-    logger.debug('Start of parse_options')
-    parser = argparse.ArgumentParser(description='Sort some integers.')
+    parser = argparse.ArgumentParser(description='Sort some integers.', formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument(
         '-v', 
         '--verbose', 
-        action='store_true'
+        action = "count",
+        help ='''
+            -v: logging.DEBUG if verbose else logging.ERROR\n
+            -vv: try all sort options and print processed time
+                '''
+    )
+    parser.add_argument(
+        '-l',
+        '--log',
+        action = "store_true",
+        help='create log file if log else log to <stderr>'
     )
     parser.add_argument(
         '-s', 
         '--sort_option', 
-        type=int, 
+        type = int, 
         default = 1, 
-        help= '1: insert_sort, 2:merge_sort, 3:quick_sort 4:bubble_sort'
+        help = '''
+            1: insert_sort\n
+            2: merge_sort\n
+            3: quick_sort\n
+            4: bubble_sort\n
+            5: heap sort
+            '''
         )
     parser.add_argument(
         '-i', 
@@ -32,12 +47,4 @@ def get_args(args):
         default=sys.stdout, 
         help='output data path, default = <stdout>'
         )
-    logger.debug('End of parse_options {}'.format(parser.parse_args(args)))
     return parser.parse_args(args)
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-f = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s')
-fh = logging.FileHandler('./log/parse_options.log')
-fh.setFormatter(f)
-logger.addHandler(fh) 

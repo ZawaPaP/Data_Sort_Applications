@@ -27,20 +27,21 @@ def merge_sort(data):
 
 def merge(sub_array1, sub_array2):
     i = j = 0
-    data = []
+    merged = []
+
     while i < len(sub_array1) and j < len(sub_array2): 
         if sub_array1[i] <= sub_array2[j]: 
-            data.append(sub_array1[i])
+            merged.append(sub_array1[i])
             i += 1 
         else:
-            data.append(sub_array2[j])
+            merged.append(sub_array2[j])
             j += 1
     if i < len(sub_array1):
-        data.extend(sub_array1[i:])
+        merged.extend(sub_array1[i:])
     if j < len(sub_array2):
-        data.extend(sub_array2[j:]) 
+        merged.extend(sub_array2[j:]) 
         
-    return data
+    return merged
 
 def quick_sort(data): 
     if len(data) <= 1:
@@ -67,9 +68,6 @@ def bubble_sort(data):
                 data[j+1] = tmp
     return data
 
-
-    
-    
 
 
 

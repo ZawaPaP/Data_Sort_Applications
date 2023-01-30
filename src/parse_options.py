@@ -7,7 +7,11 @@ def get_args(args):
     parser.add_argument(
         '-v', 
         '--verbose', 
-        action='store_true'
+        action = "count",
+        help ='''
+            -v: logging.DEBUG if verbose else logging.ERROR\n
+            -vv: try all sort options and print processed time
+                '''
     )
     parser.add_argument(
         '-s', 

@@ -1,5 +1,8 @@
 import random
 
-def generate_data():
-    data = [random.randint(0,30) for i in range(30)]
-    return data
+n = 100000
+data = [random.randint(0,n) for i in range(n)]
+with open("test_input_{}.txt".format(n), mode="w") as fp:
+    for x in data:
+        fp.writelines(str(x)+'\n')
+

@@ -18,6 +18,5 @@ def main():
     data = sort_data(validate_data(input), args.sort_option)
     io_controller.write(data)
     logger.info("Finished the application")
-    
 if __name__ == "__main__":
     main()

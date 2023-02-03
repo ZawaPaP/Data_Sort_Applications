@@ -48,3 +48,4 @@ def get_args(args):
         help='output data path, default = <stdout>'
         )
     return parser.parse_args(args)
+

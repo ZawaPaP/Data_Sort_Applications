@@ -1,6 +1,5 @@
 import sys, logging
 
-
 def validate_data(data):
     logger.debug('Start of validate_data {}'.format(data))
     if not data:

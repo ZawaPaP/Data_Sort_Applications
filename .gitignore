@@ -8,3 +8,5 @@ log.log
 test.py
 test
 test*.txt
+dev*.
+.zshrc

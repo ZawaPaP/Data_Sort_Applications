@@ -1,7 +1,6 @@
 import sys
 from set_logger import SetLogger
 
-
 def validate_data(data):
     logger = SetLogger().set_logger(__name__)
     if not data:

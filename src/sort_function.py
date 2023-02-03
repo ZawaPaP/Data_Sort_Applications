@@ -68,6 +68,3 @@ def bubble_sort(data):
                 data[j+1] = tmp
     return data
 
-
-
-

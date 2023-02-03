@@ -55,7 +55,7 @@ def quick_sort(data, l, r):
     
     pivot = data[l]
     j = l
-    for i in range(l + 1, r + 1):
+    for i in range(l + 1, r):
         if pivot >= data[i]:
             j += 1
             data[j], data[i] = data[i], data[j]

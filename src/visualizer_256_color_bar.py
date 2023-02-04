@@ -40,15 +40,16 @@ def sort(data, sort_option, start = 0, end=100):
         logger.info('sort_option: ' + str(sort_option))
         available_sort_type()
         sys.exit(1)
+       
         
-n = 256
+n = 100
 # 重複データが出ないように変更
 data = [i for i in range(1,n+1)]
 np.random.shuffle(data)
 cmap = plt.get_cmap('gist_ncar')
 
 fig, ax = plt.subplots()
-sort_option = 2
+sort_option = 3
 sort_name = SortType(sort_option)
 font = {'family':'serif','color':'blue','size':20}
 

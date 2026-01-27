@@ -9,7 +9,7 @@ def get_args(args):
         action = "count",
         help ='''
             -v: logging.DEBUG if verbose else logging.ERROR\n
-            -vv: try all sort options and print processed time
+            -vv: try all sort options and print processed time\n
                 '''
     )
     parser.add_argument(

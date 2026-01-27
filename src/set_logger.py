@@ -17,7 +17,7 @@ class SetLogger():
         return logger
             
     def set_verbose(self, logger):
-        if self.verbose >= 1:
+        if self.verbose and self.verbose >= 1:
             logger.setLevel(logging.DEBUG)
         else:
             logger.setLevel(logging.ERROR)
